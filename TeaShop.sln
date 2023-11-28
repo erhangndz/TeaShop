@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeaShop.API", "TeaShop.API\TeaShop.API.csproj", "{30E8CE19-C253-46F0-9BE1-0D021059D696}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeaShop.API", "TeaShop.API\TeaShop.API.csproj", "{30E8CE19-C253-46F0-9BE1-0D021059D696}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeaShop.Business", "TeaShop.Business\TeaShop.Business.csproj", "{34A7C2C5-FF29-4436-86FE-634D5839950E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeaShop.Business", "TeaShop.Business\TeaShop.Business.csproj", "{34A7C2C5-FF29-4436-86FE-634D5839950E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeaShop.DataAccess", "TeaShop.DataAccess\TeaShop.DataAccess.csproj", "{0412B0CD-7666-4A0C-BF98-7FBBA3265725}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeaShop.DataAccess", "TeaShop.DataAccess\TeaShop.DataAccess.csproj", "{0412B0CD-7666-4A0C-BF98-7FBBA3265725}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeaShop.Entity", "TeaShop.Entity\TeaShop.Entity.csproj", "{9BA207E7-D803-4E06-9325-3CEE16C37462}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeaShop.Entity", "TeaShop.Entity\TeaShop.Entity.csproj", "{9BA207E7-D803-4E06-9325-3CEE16C37462}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeaShop.Presentation", "TeaShop.Presentation\TeaShop.Presentation.csproj", "{2AA8405A-AE48-4508-A12F-0202D1F41910}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeaShop.Presentation", "TeaShop.Presentation\TeaShop.Presentation.csproj", "{2AA8405A-AE48-4508-A12F-0202D1F41910}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeaShop.Dto", "TeaShop.Dto\TeaShop.Dto.csproj", "{780D019C-3C9C-4D55-B4D9-303ACC6BFFE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{2AA8405A-AE48-4508-A12F-0202D1F41910}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AA8405A-AE48-4508-A12F-0202D1F41910}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AA8405A-AE48-4508-A12F-0202D1F41910}.Release|Any CPU.Build.0 = Release|Any CPU
+		{780D019C-3C9C-4D55-B4D9-303ACC6BFFE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{780D019C-3C9C-4D55-B4D9-303ACC6BFFE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{780D019C-3C9C-4D55-B4D9-303ACC6BFFE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{780D019C-3C9C-4D55-B4D9-303ACC6BFFE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

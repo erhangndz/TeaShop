@@ -1,0 +1,29 @@
+﻿@using TeaShop.Dto.Dtos.DrinkDtos
+@model List<GetDrinkDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h3>İçecekler</h3>
+@{
+    int count = 0;
+}
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>içecek</th>
+        <th>Fiyat</th>
+        
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++; 
+
+    <tr>
+        <th>@count</th>
+        <td>@item.DrinkName</td>
+        <td>@item.Price</td>
+    </tr>
+    }
+</table>
