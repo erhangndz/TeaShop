@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using TeaShop.Dto.Dtos.DrinkDtos;
+using TeaShop.Presentation.Configuration;
 
 namespace TeaShop.Presentation.Areas.Admin.Controllers
 {
@@ -26,12 +27,8 @@ namespace TeaShop.Presentation.Areas.Admin.Controllers
 			if(response.IsSuccessStatusCode)
 			{
 				var jsonData = await response.Content.ReadAsStringAsync();
-                var options = new JsonSerializerOptions
-                {
-                   
-                    PropertyNameCaseInsensitive = true 
-                };
-                var drinks = JsonSerializer.Deserialize<List<GetDrinkDto>>(jsonData,options);
+              
+                var drinks = JsonSerializer.Deserialize<List<GetDrinkDto>>(jsonData,CustomJson.Option());
 				
 				return View(drinks);
 			}
