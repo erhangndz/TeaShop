@@ -1,5 +1,5 @@
-﻿@using TeaShop.Dto.Dtos.DrinkDtos
-@model List<GetDrinkDto>
+﻿@using TeaShop.Presentation.Dtos.DrinkDtos
+@model List<ResultDrinkDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
@@ -14,16 +14,23 @@
         <th>#</th>
         <th>İçecek</th>
         <th>Fiyat</th>
-        
+        <th></th>
+
     </tr>
     @foreach (var item in Model)
     {
-        count++; 
+        count++;
 
-    <tr>
-        <th>@count</th>
-        <td>@item.DrinkName</td>
-        <td>@item.Price</td>
-    </tr>
+        <tr>
+            <th>@count</th>
+            <td>@item.DrinkName</td>
+            <td>@item.Price</td>
+            <td>
+                <a asp-action="DeleteDrink" asp-controller="Drink" asp-route-id="@item.DrinkId" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Sil</a>
+                <a asp-action="UpdateDrink" asp-route-id="@item.DrinkId" class="btn btn-outline-info"><i class="fas fa-pen"></i>Düzenle</a>
+            </td>
+        </tr>
     }
 </table>
+<br />
+<a asp-action="CreateDrink" asp-controller="Drink" class="btn btn-dark"> <i class="fas fa-plus-circle"></i>  Yeni İçecek Ekle</a>

@@ -13,7 +13,7 @@ namespace TeaShop.API.Mapping
             CreateMap<UpdateFaqDto,Faq>().ReverseMap();
             CreateMap<CreateDrinkDto,Drink>().ReverseMap();
             CreateMap<UpdateDrinkDto,Drink>().ReverseMap();
-            CreateMap<GetDrinkDto,Drink>().ReverseMap();
+            
         }
     }
 }

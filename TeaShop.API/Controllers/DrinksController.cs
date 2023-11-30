@@ -35,7 +35,7 @@ namespace TeaShop.API.Controllers
             return Ok(newDrink);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteDrink(int id)
         {
             _drinkService.TDelete(id);

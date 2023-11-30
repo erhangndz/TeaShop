@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TeaShop.Dto.Dtos.DrinkDtos
+namespace TeaShop.Presentation.Dtos.DrinkDtos
 {
-	public class GetDrinkDto
+	public class ResultDrinkDto
 	{
 		public int DrinkId { get; set; }
 		public string DrinkName { get; set; }
