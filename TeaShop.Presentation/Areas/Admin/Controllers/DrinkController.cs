@@ -28,7 +28,7 @@ namespace TeaShop.Presentation.Areas.Admin.Controllers
 			{
 				var jsonData = await response.Content.ReadAsStringAsync();
               
-                var drinks = JsonSerializer.Deserialize<List<GetDrinkDto>>(jsonData,CustomJson.Option());
+                var drinks = JsonSerializer.Deserialize<List<GetDrinkDto>>(jsonData,CustomJson.Option);
 				
 				return View(drinks);
 			}

@@ -6,15 +6,21 @@ namespace TeaShop.Presentation.Configuration
     public static class CustomJson
     {
 
-        public static JsonSerializerOptions Option()
+
+        public static JsonSerializerOptions Option
         {
-            var options = new JsonSerializerOptions
+            get
             {
-
-                PropertyNameCaseInsensitive = true
-            };
-
-            return options;
+                return new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+            }
         }
+
+       
+
+           
+        
     }
 }
