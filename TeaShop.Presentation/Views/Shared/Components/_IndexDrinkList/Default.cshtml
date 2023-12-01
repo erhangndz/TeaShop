@@ -1,0 +1,35 @@
+﻿@using TeaShop.Presentation.Dtos.DrinkDtos
+@model List<ResultDrinkDto>
+
+<div class="services_section layout_padding">
+    <div class="container">
+        <h1 class="services_taital">içecek Çeşitlerimiz</h1>
+        <p class="services_text">Uzun yılların tecrübesiyle size hizmet etmeye devam ediyoruz. </p>
+        <div class="services_section_2 layout_padding">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    
+                
+                <div class="col-md-6">
+                    <div class="box_main">
+                        <div class="left_main">
+                            <div class="cup_img_1"><img src="~/teab-1.0.0/images/cup-img-1.png"></div>
+                        </div>
+                        <div class="middle_main">
+                            <div class="border_10 active"></div>
+                        </div>
+                        <div class="right_main">
+                            <h6 class="milk_text">@item.DrinkName</h6>
+                            <h1 class="price_text">@item.Price ₺</h1>
+                        </div>
+                    </div>
+            
+                </div>
+                }
+               
+            </div>
+        </div>
+        <div class="see_bt"><a href="#">Tümünü Gör</a></div>
+    </div>
+</div>

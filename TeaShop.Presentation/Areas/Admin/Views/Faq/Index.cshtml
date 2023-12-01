@@ -1,0 +1,37 @@
+﻿@using TeaShop.Presentation.Dtos.FaqDtos
+@model List<ResultFaqDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h3>Sık Sorulan Sorular</h3>
+
+@{
+    int count = 0;
+}
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>Soru</th>
+        <th>Cevap</th>
+        <th></th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+
+        <tr>
+            <th>@count</th>
+            <td>@item.Question</td>
+            <td>@item.Answer</td>
+            <td>
+                <a asp-action="DeleteFaq" asp-route-id="@item.FaqId" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Sil</a>
+                <a asp-action="UpdateFaq" asp-route-id="@item.FaqId" class="btn btn-outline-info"><i class="fas fa-pen"></i>Düzenle</a>
+            </td>
+        </tr>
+    }
+</table>
+<br />
+<a asp-action="CreateFaq" class="btn btn-dark"> <i class="fas fa-plus-circle"></i>  Yeni Soru Ekle</a>

@@ -1,0 +1,22 @@
+﻿@using TeaShop.Presentation.Dtos.FaqDtos
+@model CreateFaqDto
+@{
+    ViewData["Title"] = "CreateFaq";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h3>Yeni Soru-Cevap Oluştur</h3>
+
+<form method="post">
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" asp-for="Question" id="floatingInput" placeholder="Soru">
+        <label for="floatingInput">Soru</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" asp-for="Answer" id="floatingInput" placeholder="Cevap">
+        <label for="floatingInput">Cevap</label>
+    </div>
+   
+
+    <button class="btn btn-dark"> <i class="fas fa-save"></i> Kaydet</button>
+</form>

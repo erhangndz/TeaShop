@@ -1,0 +1,23 @@
+﻿@using TeaShop.Presentation.Dtos.FaqDtos
+@model UpdateFaqDto
+@{
+    ViewData["Title"] = "UpdateFaq";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h3>Soru-Cevap Düzenleme</h3>
+
+<form method="post">
+    <input type="hidden" asp-for="FaqId" />
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" asp-for="Question" id="floatingInput" placeholder="Soru">
+        <label for="floatingInput">Soru</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" asp-for="Answer" id="floatingInput" placeholder="Cevap">
+        <label for="floatingInput">Cevap</label>
+    </div>
+
+
+    <button class="btn btn-dark"> <i class="fas fa-pen"></i> Güncelle</button>
+</form>

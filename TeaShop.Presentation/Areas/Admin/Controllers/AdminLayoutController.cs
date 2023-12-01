@@ -10,5 +10,10 @@ namespace TeaShop.Presentation.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public IActionResult AdminSidebar()
+        {
+            return View();
+        }
     }
 }

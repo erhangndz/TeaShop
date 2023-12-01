@@ -11,13 +11,19 @@ namespace TeaShop.Presentation.Areas.Admin.Controllers
     [Route("[area]/[controller]/[action]/{id?}")]
     public class DrinkController : Controller
     {
+        IHttpClientFactory _httpClientFactory;
 
+        public DrinkController(IHttpClientFactory httpClientFactory)
+        {
+            _httpClientFactory = httpClientFactory;
+        }
 
-        HttpClient client = new HttpClient();
+        
+        
 
         public async Task<IActionResult> Index()
         {
-
+            var client = _httpClientFactory.CreateClient();
             var response = await client.GetAsync("https://localhost:7248/api/Drinks");
             if (response.IsSuccessStatusCode)
             {
@@ -39,7 +45,7 @@ namespace TeaShop.Presentation.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateDrink(CreateDrinkDto createDrinkDto)
         {
-
+            var client = _httpClientFactory.CreateClient();
             var jsonData = JsonSerializer.Serialize(createDrinkDto, CustomJson.Option);
             var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var response = await client.PostAsync("https://localhost:7248/api/Drinks", content);
@@ -54,7 +60,7 @@ namespace TeaShop.Presentation.Areas.Admin.Controllers
 
         public async Task<IActionResult> DeleteDrink(int id)
         {
-
+            var client = _httpClientFactory.CreateClient();
             var response = await client.DeleteAsync("https://localhost:7248/api/Drinks/" + id);
             if (response.IsSuccessStatusCode)
             {
@@ -68,7 +74,7 @@ namespace TeaShop.Presentation.Areas.Admin.Controllers
 
         public async Task<IActionResult> UpdateDrink(int id)
         {
-
+            var client = _httpClientFactory.CreateClient();
             var response = await client.GetAsync("https://localhost:7248/api/Drinks/" + id);
             if (response.IsSuccessStatusCode)
             {
@@ -82,7 +88,7 @@ namespace TeaShop.Presentation.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateDrink(UpdateDrinkDto updateDrinkDto)
         {
-
+            var client = _httpClientFactory.CreateClient();
             var jsonData = JsonSerializer.Serialize(updateDrinkDto, CustomJson.Option);
             var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var response = await client.PutAsync("https://localhost:7248/api/Drinks?id=", content);
