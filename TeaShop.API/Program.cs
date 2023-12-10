@@ -13,6 +13,7 @@ builder.Services.AddDbContext<TeaContext>(opt =>
     opt.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"));
 });
 builder.Services.AddControllers();
+builder.Services.AddScoped<IStatisticsService, StatisticsService>();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddCors(options =>
 {

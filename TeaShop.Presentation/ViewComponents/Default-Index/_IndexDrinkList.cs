@@ -7,24 +7,21 @@ namespace TeaShop.Presentation.ViewComponents.Default_Index
 {
     public class _IndexDrinkList:ViewComponent
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        
+        private readonly HttpClient _client;
 
-        public _IndexDrinkList(IHttpClientFactory httpClientFactory)
+        public _IndexDrinkList( HttpClient client)
         {
-            _httpClientFactory = httpClientFactory;
+            
+            _client = client;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://localhost:7248/api/Drinks");
-            if(response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var values = JsonSerializer.Deserialize<List<ResultDrinkDto>>(jsonData, CustomJson.Option);
-                return View(values);
-            }
-            return View();
+            var drinks = await _client.GetFromJsonAsync<List<ResultDrinkDto>>("https://localhost:7248/api/Drinks");
+            
+            return View(drinks);
+
         }
     }
 }

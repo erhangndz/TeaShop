@@ -4,6 +4,7 @@ using System.Text.Json;
 using TeaShop.Presentation.Configuration;
 using TeaShop.Presentation.Dtos.DrinkDtos;
 using System.Text;
+using NuGet.DependencyResolver;
 
 namespace TeaShop.Presentation.Areas.Admin.Controllers
 {
@@ -11,29 +12,21 @@ namespace TeaShop.Presentation.Areas.Admin.Controllers
     [Route("[area]/[controller]/[action]/{id?}")]
     public class DrinkController : Controller
     {
-        IHttpClientFactory _httpClientFactory;
 
-        public DrinkController(IHttpClientFactory httpClientFactory)
+        private readonly HttpClient _client;
+
+        public DrinkController(HttpClient client)
         {
-            _httpClientFactory = httpClientFactory;
-        }
 
-        
-        
+            _client = client;
+        }
+        Uri baseUri = new Uri("https://localhost:7248/api/Drinks");
 
         public async Task<IActionResult> Index()
         {
-            var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://localhost:7248/api/Drinks");
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-
-                var drinks = JsonSerializer.Deserialize<List<ResultDrinkDto>>(jsonData, CustomJson.Option);
-
-                return View(drinks);
-            }
-            return View();
+          
+            var drinks = await _client.GetFromJsonAsync<List<ResultDrinkDto>>(baseUri);
+            return View(drinks);
 
         }
 
@@ -45,58 +38,28 @@ namespace TeaShop.Presentation.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateDrink(CreateDrinkDto createDrinkDto)
         {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonSerializer.Serialize(createDrinkDto, CustomJson.Option);
-            var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync("https://localhost:7248/api/Drinks", content);
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index");
-            }
-
-            return View();
+            await _client.PostAsJsonAsync(baseUri, createDrinkDto);
+            return RedirectToAction("Index");
         }
 
 
         public async Task<IActionResult> DeleteDrink(int id)
         {
-            var client = _httpClientFactory.CreateClient();
-            var response = await client.DeleteAsync("https://localhost:7248/api/Drinks/" + id);
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index");
-            }
-            return View();
-
-
-
+            await _client.DeleteAsync($"{baseUri}/{id}");
+            return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> UpdateDrink(int id)
         {
-            var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://localhost:7248/api/Drinks/" + id);
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var drink = JsonSerializer.Deserialize<UpdateDrinkDto>(jsonData, CustomJson.Option);
-                return View(drink);
-            }
-            return View();
+            var value = await _client.GetFromJsonAsync<UpdateDrinkDto>($"{baseUri}/{id}");
+            return View(value);
         }
 
         [HttpPost]
         public async Task<IActionResult> UpdateDrink(UpdateDrinkDto updateDrinkDto)
         {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonSerializer.Serialize(updateDrinkDto, CustomJson.Option);
-            var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var response = await client.PutAsync("https://localhost:7248/api/Drinks?id=", content);
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index");
-            }
-            return View();
+            await _client.PutAsJsonAsync(baseUri, updateDrinkDto);
+            return RedirectToAction("Index");
         }
 
     }

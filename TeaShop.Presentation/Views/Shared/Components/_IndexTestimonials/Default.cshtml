@@ -1,15 +1,17 @@
 ﻿@using TeaShop.Presentation.Dtos.TestimonialDtos
 @model List<ResultTestimonialDto>
 
-
+@{
+    var active = "";
+}
 <div class="clients_section layout_padding">
     <div id="custum_slider" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             @foreach (var item in Model)
             {
-                
-            
-            <div class="carousel-item active">
+                if(item.TestimonialId==1){ active = "active"; } else{ active = " "; }
+
+            <div class="carousel-item @active">
                 <div class="container">
                     <h1 class="clients_taital">Client's Testimonial</h1>
                     <p class="clients_text">
