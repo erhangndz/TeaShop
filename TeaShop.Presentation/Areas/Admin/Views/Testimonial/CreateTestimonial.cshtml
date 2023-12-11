@@ -1,0 +1,24 @@
+﻿@model CreateTestimonialDto
+@{
+    ViewData["Title"] = "CreateTestimonial";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h3>Yeni Referans Oluştur</h3>
+
+<form method="post">
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" asp-for="Name" id="floatingInput" placeholder="Ad Soyad">
+        <label for="floatingInput">Ad Soyad</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" asp-for="Comment" id="floatingInput" placeholder="Yorum">
+        <label for="floatingInput">Yorum</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" asp-for="ImageUrl" id="floatingInput" placeholder="Görsel URL">
+        <label for="floatingInput">Görsel URL</label>
+    </div>
+
+    <button class="btn btn-dark"> <i class="fas fa-save"></i>Kaydet</button>
+</form>

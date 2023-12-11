@@ -10,26 +10,19 @@ namespace TeaShop.Presentation.Areas.Admin.Controllers
     [Route("[area]/[controller]/[action]/{id?}")]
     public class FaqController : Controller
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly HttpClient _client;
 
-        public FaqController(IHttpClientFactory httpClientFactory)
+        public FaqController(HttpClient client)
         {
-            _httpClientFactory = httpClientFactory;
+            _client = client;
         }
-
+        string baseUri = "https://localhost:7248/api/Faq/";
         public async Task<IActionResult> Index()
         {
-            var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://localhost:7248/api/Faq");
-            if(response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var values = JsonSerializer.Deserialize<List<ResultFaqDto>>(jsonData, CustomJson.Option);
-                return View(values);
-            }
-            return View();
+            var faqs = await _client.GetFromJsonAsync<List<ResultFaqDto>>(baseUri);
+            return View(faqs);
         }
-
+       
         public IActionResult CreateFaq()
         {
             return View();
@@ -38,54 +31,30 @@ namespace TeaShop.Presentation.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateFaq(CreateFaqDto createFaqDto)
         {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData= JsonSerializer.Serialize(createFaqDto,CustomJson.Option);
-            var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync("https://localhost:7248/api/Faq", content);
-            if(response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index");
-            }
-            return View();
+            await _client.PostAsJsonAsync(baseUri, createFaqDto);
+            return RedirectToAction("Index");
         }
+
 
         [HttpGet]
         public async Task<IActionResult> UpdateFaq(int id)
         {
-            var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://localhost:7248/api/Faq/"+id);
-            if(response.IsSuccessStatusCode)
-            {
-                var jsonData= await response.Content.ReadAsStringAsync();
-                var value = JsonSerializer.Deserialize<UpdateFaqDto>(jsonData, CustomJson.Option);
-                return View(value);
-            }
-            return View();
+            var faq = await _client.GetFromJsonAsync<UpdateFaqDto>(baseUri + id);
+            return View(faq);
         }
 
         [HttpPost]
         public async Task<IActionResult> UpdateFaq(UpdateFaqDto updateFaqDto)
         {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData= JsonSerializer.Serialize(updateFaqDto, CustomJson.Option);
-            var content = new StringContent(jsonData,Encoding.UTF8, "application/json");
-            var response = await client.PutAsync("https://localhost:7248/api/Faq", content);
-            if(response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index");
-            }
-            return View();
+            await _client.PutAsJsonAsync(baseUri, updateFaqDto);
+            return RedirectToAction("Index");
+
         }
 
         public async Task<IActionResult> DeleteFaq(int id)
         {
-            var client = _httpClientFactory.CreateClient();
-            var response = await client.DeleteAsync("https://localhost:7248/api/Faq/" + id);
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index");
-            }
-            return View();
+            await _client.DeleteAsync(baseUri + id);
+            return RedirectToAction("Index");
         }
     }
 }

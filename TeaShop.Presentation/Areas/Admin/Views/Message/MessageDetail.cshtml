@@ -1,0 +1,30 @@
+﻿@model ResultMessageDto
+@{
+    ViewData["Title"] = "MessageDetail";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h3>Gelen Mesaj Detayı</h3>
+
+<table class="table table-striped">
+    <tr>
+        <th>Ad Soyad :</th>
+        <td>@Model.SenderName</td>
+    </tr>
+    <tr>
+        <th>Email :</th>
+        <td>@Model.SenderEmail</td>
+    </tr>
+    <tr>
+        <th>Konu :</th>
+        <td>@Model.Subject</td>
+    </tr>
+    <tr>
+        <th>Tarih :</th>
+        <td>@Model.SendDate.ToString("g")</td>
+    </tr>
+    <tr>
+        <th>Mesaj :</th>
+        <td>@Model.Content</td>
+    </tr>
+</table>

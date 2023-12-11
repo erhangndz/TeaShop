@@ -1,0 +1,36 @@
+﻿@model List<ResultAboutDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h3>Hakkımızda</h3>
+
+@{
+    int count = 0;
+}
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>Başlık</th>
+        <th>Açıklama</th>
+        <th></th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+
+        <tr>
+            <th>@count</th>
+            <td><img src="@item.ImageUrl" style="height:75px;width:75px;border-radius:50%" />  @item.Title</td>
+            <td>@item.Description</td>
+            <td>
+                <a asp-action="DeleteAbout" asp-route-id="@item.AboutID" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Sil</a>
+                <a asp-action="UpdateAbout" asp-route-id="@item.AboutID" class="btn btn-outline-info"><i class="fas fa-pen"></i>Düzenle</a>
+            </td>
+        </tr>
+    }
+</table>
+<br />
+<a asp-action="CreateAbout" class="btn btn-dark"> <i class="fas fa-plus-circle"></i>  Yeni Hakkımızda Oluştur</a>

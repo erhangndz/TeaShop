@@ -16,6 +16,8 @@ namespace TeaShop.DataAccess.Concrete
         public DbSet<Faq> Faqs { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
+        public DbSet<About> Abouts { get; set; }
+        public DbSet<Subscribe> Subscribes { get; set; }
 
     }
 }

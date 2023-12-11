@@ -1,0 +1,34 @@
+﻿@model List<ResultSubscribeDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h3>Aboneler</h3>
+
+@{
+    int count = 0;
+}
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>Email</th>
+   
+        <th></th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+
+        <tr>
+            <th>@count</th>
+            <td> @item.Email</td>
+   
+            <td>
+                <a asp-action="DeleteSubscribe" asp-route-id="@item.SubscribeId" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Sil</a>
+               
+            </td>
+        </tr>
+    }
+</table>

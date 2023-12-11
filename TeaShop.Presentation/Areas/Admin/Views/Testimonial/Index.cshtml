@@ -1,0 +1,36 @@
+﻿@model List<ResultTestimonialDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<h3>Referanslar</h3>
+
+@{
+    int count = 0;
+}
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>Ad Soyad</th>
+        <th>Yorum</th>
+        <th></th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+
+        <tr>
+            <th>@count</th>
+            <td><img src="@item.ImageUrl" style="height:75px;width:75px;border-radius:50%" />  @item.Name</td>
+            <td>@item.Comment</td>
+            <td>
+                <a asp-action="DeleteTestimonial" asp-route-id="@item.TestimonialId" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Sil</a>
+                <a asp-action="UpdateTestimonial" asp-route-id="@item.TestimonialId" class="btn btn-outline-info"><i class="fas fa-pen"></i>Düzenle</a>
+            </td>
+        </tr>
+    }
+</table>
+<br />
+<a asp-action="CreateTestimonial" class="btn btn-dark"> <i class="fas fa-plus-circle"></i>  Yeni Referans Oluştur</a>

@@ -1,0 +1,38 @@
+﻿@using TeaShop.Presentation.Dtos.AboutDtos
+@model List<ResultAboutDto>
+
+<div class="about_section layout_padding">
+    <div id="my_main_slider" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            @foreach (var item in Model)
+            {
+                
+            
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="about_main">
+                                <h1 class="about_taital">@item.Title</h1>
+                                <p class="about_text">
+                                 @item.Description
+                                </p>
+                                <div class="readmore_bt"><a href="#">Devamını Oku</a></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 ">
+                            <div class="image_2"><img src="@item.ImageUrl"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           }
+        </div>
+        <a class="carousel-control-prev" href="#my_main_slider" role="button" data-slide="next">
+            <i class="fa fa-angle-left"></i>
+        </a>
+        <a class="carousel-control-next" href="#my_main_slider" role="button" data-slide="next">
+            <i class="fa fa-angle-right"></i>
+        </a>
+    </div>
+</div>
