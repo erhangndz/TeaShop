@@ -5,11 +5,13 @@ using TeaShop.Presentation.Configuration;
 using TeaShop.Presentation.Dtos.DrinkDtos;
 using System.Text;
 using NuGet.DependencyResolver;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TeaShop.Presentation.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("[area]/[controller]/[action]/{id?}")]
+  
     public class DrinkController : Controller
     {
 

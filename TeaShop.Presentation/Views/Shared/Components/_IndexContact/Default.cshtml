@@ -1,0 +1,36 @@
+﻿<div class="contact_section layout_padding" id="contact">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mail_main">
+                    <h1 class="contact_taital">İletişime Geçin</h1>
+                    <form method="post" asp-controller="Default" asp-action="SendMessage">
+                        <div class="form-group">
+                            <input type="text" class="email-bt" placeholder="Adınız Soyadınız" name="SenderName">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="email-bt" placeholder="Email Adresiniz" name="SenderEmail">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="email-bt" placeholder="Konu" name="Subject">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="massage-bt" placeholder="Mesajınızı buraya yazın" rows="5" id="comment" name="Content"></textarea>
+                        </div>
+                        <div class="send_btn">
+                            <button class="btn btn-outline-warning" type="submit">Gönder</button>
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="map_main">
+                    <div class="map-responsive">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12239.345451563935!2d32.811040713646804!3d39.922678044369555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d34f319ae6df75%3A0x374440c0af598bfb!2sEmek!5e0!3m2!1str!2str!4v1702574032044!5m2!1str!2str" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -29,6 +29,8 @@
     <!-- fevicon -->
     <link rel="icon" href="~/teab-1.0.0/images/fevicon.png" type="image/gif" />
     <!-- Scrollbar Custom CSS -->
+   
+   
     <link rel="stylesheet" href="~/teab-1.0.0/css/jquery.mCustomScrollbar.min.css">
     <!-- Tweaks for older IEs-->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
@@ -42,8 +44,8 @@
 <body>
     <!-- header section start -->
     <div class="header_section">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="logo"><a href="index.html"><img src="~/teab-1.0.0/images/logo.png"></a></div>
+        <nav class="fixed-nav-bar navbar-light navbar-expand-xl bg-light">
+            <div class="logo"><a href="/Default/Index"><img src="~/teab-1.0.0/images/logo.png"></a></div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -51,11 +53,11 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-item nav-link" href="/Default/Index">Ana Sayfa</a>
-                    <a class="nav-item nav-link" href="about.html">Hakkımızda</a>
-                    <a class="nav-item nav-link" href="teashop.html">Teashop</a>
-                    <a class="nav-item nav-link" href="pricing.html">Fiyatlar</a>
-                    <a class="nav-item nav-link" href="testimonies.html">Referanslar</a>
-                    <a class="nav-item nav-link" href="contact.html">İletişim</a>
+                    <a class="nav-item nav-link" href="#about">Hakkımızda</a>
+                    <a class="nav-item nav-link" href="#drinks">İçecekler</a>
+                    <a class="nav-item nav-link" href="#testimonials">Referanslar</a>
+                    <a class="nav-item nav-link" href="#contact">İletİşİm</a>
+                    <a class="nav-item nav-link" href="/Account/Login">Giriş Yap</a>
                 </div>
             </div>
             <div class="login_menu">
@@ -72,77 +74,77 @@
                     <div class="newsletter_left">
                         <div class="footer_logo"><img src="~/teab-1.0.0/images/footer-logo.png"></div>
                     </div>
+                    <form method="post" asp-controller="Default" asp-action="Subscribe">
                     <div class="newsletter_right">
-                        <h5 class="newsletter_taital">Subscribe Newsletter</h5>
+                        <h5 class="newsletter_taital">Bültenimize Abone Olun</h5>
                         <div class="subscribe_main">
-                            <input type="text" class="mail_text" placeholder="Enter your email" name="text">
-                            <div class="subscribe_bt"><a href="#">Subscribe</a></div>
+                            <input type="text" class="mail_text" placeholder="Email Adresinizi Yazın" name="Email">
+                            <button class="btn btn-outline-warning">Abone Ol</button>
                         </div>
                     </div>
+                    </form>
                 </div>
                 <div class="footer_taital_main">
                     <div class="row">
                         <div class="col-lg-3 col-sm-6">
-                            <h2 class="useful_text">About</h2>
+                            <h2 class="useful_text">Hakkımızda</h2>
                             <p class="ipsum_text">
-                                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation u
+                                Uzun yıllardır gelen tecrübelerimizle sizler için dünyanın çeşitli yerlerinden en güzel kahveleri hazırlıyoruz.
                             </p>
                         </div>
                         <div class="col-lg-3 col-sm-6">
-                            <h2 class="useful_text">Menus</h2>
+                            <h2 class="useful_text">Menüler</h2>
                             <div class="footer_links">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="services.html">Services</a></li>
-                                    <li><a href="pricing.html">Pricing</a></li>
-                                    <li><a href="contact.html">Contact us</a></li>
+                                    <li><a href="index.html">Ana Sayfa</a></li>
+                                    <li><a href="about.html">Hakkımızda</a></li>
+                                    <li><a href="services.html">Hizmetler</a></li>
+                                    <li><a href="pricing.html">Fiyatlar</a></li>
+                                    <li><a href="contact.html">İletişim</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6">
-                            <h2 class="useful_text">Useful Link</h2>
+                            <h2 class="useful_text">Yararlı Linkler</h2>
                             <div class="footer_links">
                                 <ul>
-                                    <li><a href="#">Adipiscing</a></li>
-                                    <li><a href="#">Elit, sed do</a></li>
-                                    <li><a href="#">Eiusmod </a></li>
-                                    <li><a href="#">Tempor </a></li>
-                                    <li><a href="#">incididunt</a></li>
+                                    <li><a href="#">Çaylar</a></li>
+                                    <li><a href="#">Kahveler</a></li>
+                                    <li><a href="#">Likörler </a></li>
+                                    <li><a href="#">Referanslar </a></li>
+                                   
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6">
-                            <h2 class="useful_text">Contact us</h2>
+                            <h2 class="useful_text">İletişim Bilgileri</h2>
                             <div class="addres_link">
                                 <ul>
                                     <li>
                                         <a href="#">
                                             <img src="~/teab-1.0.0/images/map-icon.png"><span class="padding_left_10">
-                                                No.123 Chalingt
-                                                Gates
+                                                No.123 Emek, Çankaya, Ankara
                                             </span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
                                             <img src="~/teab-1.0.0/images/call-icon.png"><span class="padding_left_10">
-                                                +01
+                                                +90
                                                 1234567890
                                             </span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <img src="~/teab-1.0.0/images/mail-icon.png"><span class="padding_left_10">demo@gmail.com</span>
+                                            <img src="~/teab-1.0.0/images/mail-icon.png"><span class="padding_left_10">destek@teashop.com</span>
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <h1 class="follow_text">Follow Us</h1>
+                    <h1 class="follow_text">Bizi Takip Edin</h1>
                     <div class="social_icon">
                         <ul>
                             <li><a href="#"><img src="~/teab-1.0.0/images/fb-icon.png"></a></li>
@@ -159,10 +161,9 @@
         <div class="copyright_section">
             <div class="container">
                 <p class="copyright_text">
-                    Copyright 2019 All Right Reserved By.<a href="https://html.design">
-                        Free html
-                        Templates
-                    </a> Distributed by. <a href="https://themewagon.com">ThemeWagon</a>
+                    Copyright @DateTime.Now.Year Tüm hakları saklıdır.  Designed by<a href="https://html.design">
+                        
+                    </a>  <a href="https://themewagon.com">ThemeWagon</a>
                 </p>
                 </p>
             </div>

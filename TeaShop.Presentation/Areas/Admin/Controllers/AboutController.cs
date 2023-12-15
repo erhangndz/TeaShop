@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TeaShop.Presentation.Dtos.AboutDtos;
 
 namespace TeaShop.Presentation.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("[area]/[controller]/[action]/{id?}")]
+
     public class AboutController : Controller
     {
         private readonly HttpClient _client;

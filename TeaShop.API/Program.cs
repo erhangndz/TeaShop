@@ -1,9 +1,13 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
+using TeaShop.API.Validations;
 using TeaShop.Business.Abstract;
 using TeaShop.Business.Concrete;
 using TeaShop.DataAccess.Abstract;
 using TeaShop.DataAccess.Concrete;
 using TeaShop.DataAccess.Repositories;
+using TeaShop.Entity.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +16,10 @@ builder.Services.AddDbContext<TeaContext>(opt =>
 {
     opt.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"));
 });
+
+builder.Services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<TeaContext>().AddErrorDescriber<CustomIdentityValidator>();
 builder.Services.AddControllers();
+
 builder.Services.AddScoped<IStatisticsService, StatisticsService>();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddCors(options =>

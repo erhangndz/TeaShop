@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using TeaShop.Dto.Dtos.AboutDtos;
+using TeaShop.Dto.Dtos.AccountDtos;
 using TeaShop.Dto.Dtos.DrinkDtos;
 using TeaShop.Dto.Dtos.FaqDtos;
 using TeaShop.Dto.Dtos.MessageDtos;
@@ -30,6 +31,9 @@ namespace TeaShop.API.Mapping
 
             CreateMap<CreateSubscribeDto, Subscribe>().ReverseMap();
             CreateMap<UpdateSubscribeDto, Subscribe>().ReverseMap();
+
+            CreateMap<RegisterDto, AppUser>().ReverseMap();
+            CreateMap<LoginDto, AppUser>().ReverseMap();
 
 
         }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Client;
 using TeaShop.Business.Abstract;
 
 namespace TeaShop.API.Controllers
@@ -37,6 +38,30 @@ namespace TeaShop.API.Controllers
         public IActionResult GetMaxPriceDrink()
         {
             return Ok(_statisticsService.MaxPriceDrink());
+        }
+
+        [HttpGet]
+        public IActionResult GetTestimonialCount()
+        {
+            return Ok(_statisticsService.GetTestimonialCount());
+        }
+
+        [HttpGet]
+        public IActionResult GetMessageCount()
+        {
+            return Ok(_statisticsService.GetMessageCount());
+        }
+
+        [HttpGet]
+        public IActionResult GetFaqCount()
+        {
+            return Ok(_statisticsService.GetFaqCount());
+        }
+
+        [HttpGet]
+        public IActionResult GetSubscribeCount()
+        {
+            return Ok(_statisticsService.GetSubscriberCount());
         }
     }
 }

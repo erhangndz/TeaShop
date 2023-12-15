@@ -25,7 +25,16 @@
         <tr>
             <th>@count</th>
             <td>@item.Question</td>
-            <td>@item.Answer</td>
+            <td>
+                @if (item.Answer.Length > 35)
+                {
+                    <div>@item.Answer.Substring(0, 35) ...</div>
+                }
+                else
+                {
+                    @item.Answer
+                }
+            </td>
             <td>
                 <a asp-action="DeleteFaq" asp-route-id="@item.FaqId" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Sil</a>
                 <a asp-action="UpdateFaq" asp-route-id="@item.FaqId" class="btn btn-outline-info"><i class="fas fa-pen"></i>Düzenle</a>

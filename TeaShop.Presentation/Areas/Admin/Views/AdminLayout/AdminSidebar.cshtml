@@ -4,17 +4,17 @@
 
 			<div class="">
 				<div class="main-menu-header">
-					<img class="img-radius" src="~/flat-able-admin/dist/assets/images/user/avatar-2.jpg" alt="User-Profile-Image">
+					<img class="img-radius" src="https://i.hizliresim.com/k5r40gw.jfif" alt="User-Profile-Image">
 					<div class="user-details">
-						<span>John Doe</span>
-						<div id="more-details">UX Designer<i class="fa fa-chevron-down m-l-5"></i></div>
+						<span> @User.Identity.Name</span>
+						<div id="more-details">Admin<i class="fa fa-chevron-down m-l-5"></i></div>
 					</div>
 				</div>
 				<div class="collapse" id="nav-user-link">
 					<ul class="list-unstyled">
-						<li class="list-group-item"><a href="user-profile.html"><i class="feather icon-user m-r-5"></i>View Profile</a></li>
-						<li class="list-group-item"><a href="#!"><i class="feather icon-settings m-r-5"></i>Settings</a></li>
-						<li class="list-group-item"><a href="auth-normal-sign-in.html"><i class="feather icon-log-out m-r-5"></i>Logout</a></li>
+						<li class="list-group-item"><a href="user-profile.html"><i class="feather icon-user m-r-5"></i>Profil</a></li>
+						<li class="list-group-item"><a href="#!"><i class="feather icon-settings m-r-5"></i>Ayarlar</a></li>
+						<li class="list-group-item"><a href="auth-normal-sign-in.html"><i class="feather icon-log-out m-r-5"></i>Çıkış Yap</a></li>
 					</ul>
 				</div>
 			</div>
@@ -25,22 +25,25 @@
 					<a asp-controller="Dashboard" asp-action="Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
 				</li>
 				<li class="nav-item">
-					<a asp-controller="Drink" asp-action="Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">İçecekler</span></a>
+					<a asp-controller="Drink" asp-action="Index" class="nav-link "><span class="pcoded-micon"><i class="fas fa-coffee"></i></span><span class="pcoded-mtext">İçecekler</span></a>
 				</li>
 				<li class="nav-item">
-					<a asp-controller="About" asp-action="Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Hakkımızda</span></a>
+					<a asp-controller="About" asp-action="Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-list"></i></span><span class="pcoded-mtext">Hakkımızda</span></a>
 				</li>
 				<li class="nav-item">
-					<a asp-controller="Testimonial" asp-action="Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Referanslar</span></a>
+					<a asp-controller="Testimonial" asp-action="Index" class="nav-link "><span class="pcoded-micon"><i class="fas fa-quote-left"></i></span><span class="pcoded-mtext">Referanslar</span></a>
 				</li>
 				<li class="nav-item">
-					<a asp-controller="Faq" asp-action="Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Soru - Cevap</span></a>
+					<a asp-controller="Faq" asp-action="Index" class="nav-link "><span class="pcoded-micon"><i class="fas fa-question"></i></span><span class="pcoded-mtext">Soru - Cevap</span></a>
 				</li>
 				<li class="nav-item">
-					<a asp-controller="Message" asp-action="Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Gelen Mesajlar</span></a>
+					<a asp-controller="Message" asp-action="Index" class="nav-link "><span class="pcoded-micon"><i class="fas fa-comments"></i></span><span class="pcoded-mtext">Gelen Mesajlar</span></a>
 				</li>
 				<li class="nav-item">
-					<a asp-controller="Subscribe" asp-action="Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Aboneler</span></a>
+					<a asp-controller="Subscribe" asp-action="Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-mail"></i></span><span class="pcoded-mtext">Aboneler</span></a>
+				</li>
+				<li class="nav-item">
+					<a asp-controller="Subscribe" asp-action="Index" class="nav-link "><span class="pcoded-micon"><i class="fas fa-laptop"></i></span><span class="pcoded-mtext">Siteye Git</span></a>
 				</li>
 
 			</ul>

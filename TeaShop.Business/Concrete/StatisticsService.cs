@@ -27,7 +27,27 @@ namespace TeaShop.Business.Concrete
 			return _context.Drinks.Count();
 		}
 
-		public string LastDrinkName()
+        public int GetFaqCount()
+        {
+            return _context.Faqs.Count();
+        }
+
+        public int GetMessageCount()
+        {
+            return _context.Messages.Count();
+        }
+
+        public int GetSubscriberCount()
+        {
+           return _context.Subscribes.Count();
+        }
+
+        public int GetTestimonialCount()
+        {
+			return _context.Testimonials.Count();
+        }
+
+        public string LastDrinkName()
 		{
 			return _context.Drinks.OrderByDescending(x=>x.DrinkId).Select(x=>x.DrinkName).FirstOrDefault();
 		}

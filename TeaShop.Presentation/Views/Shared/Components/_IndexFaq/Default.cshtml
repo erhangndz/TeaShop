@@ -1,0 +1,42 @@
+﻿@using TeaShop.Presentation.Dtos.FaqDtos
+@model List<ResultFaqDto>
+@{
+    int count = 0;
+}
+<div class="frequently_section layout_padding">
+    <div class="container">
+        <h1 class="frequently_taital">Sık Sorulan Sorular</h1>
+        <p class="frequently_text">
+           En sık karşılaştığımız soruları burada cevapladık iletişime geçmeden önce lütfen soruları ve cevapları inceleyin.
+        </p>
+        <div class="frequently_section_2 layout_padding">
+            <div class="bs-example">
+                <div class="accordion" id="accordionExample">
+                    @foreach (var item in Model)
+                    {
+                        count++;
+
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button type="button" class="btn btn-link w-100" data-toggle="collapse"
+                                        data-target="#collapse_@count">
+                                    <i class="fa fa-plus"></i>@item.Question
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapse_@count" class="collapse" aria-labelledby="headingOne"
+                             data-parent="#accordionExample">
+                            <div class="card-body">
+                                <p>
+                                    @item.Answer 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+             }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

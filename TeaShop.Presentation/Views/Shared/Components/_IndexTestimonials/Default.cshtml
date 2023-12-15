@@ -4,7 +4,7 @@
 @{
     var active = "";
 }
-<div class="clients_section layout_padding">
+<div class="clients_section layout_padding" id="testimonials">
     <div id="custum_slider" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             @foreach (var item in Model)
@@ -13,13 +13,13 @@
 
             <div class="carousel-item @active">
                 <div class="container">
-                    <h1 class="clients_taital">Client's Testimonial</h1>
+                    <h1 class="clients_taital">Müşteri Yorumları</h1>
                     <p class="clients_text">
                       @item.Comment
                     </p>
-                    <div class="client_img"><img src="~/teab-1.0.0/images/client-img.png"></div>
+                    <div class="client_img"><img src="@item.ImageUrl" style="height:75px;width:75px;border-radius:50%" /></div>
                     <h1 class="louis_text">@item.Name</h1>
-                    <h1 class="smyth_text">Müşteri</h1>
+                   
                     <div class="border"></div>
                 </div>
             </div>

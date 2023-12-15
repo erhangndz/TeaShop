@@ -1,7 +1,7 @@
 ﻿@using TeaShop.Presentation.Dtos.DrinkDtos
 @model List<ResultDrinkDto>
 
-<div class="services_section layout_padding">
+<div class="services_section layout_padding" id="drinks">
     <div class="container">
         <h1 class="services_taital">içecek Çeşitlerimiz</h1>
         <p class="services_text">Uzun yılların tecrübesiyle size hizmet etmeye devam ediyoruz. </p>
@@ -14,7 +14,7 @@
                 <div class="col-md-6">
                     <div class="box_main">
                         <div class="left_main">
-                            <div class="cup_img_1"><img src="~/teab-1.0.0/images/cup-img-1.png"></div>
+                            <div class="cup_img_1"><img src="@item.ImageUrl" style="height:200px;width:200px"></div>
                         </div>
                         <div class="middle_main">
                             <div class="border_10 active"></div>

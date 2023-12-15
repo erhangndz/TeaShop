@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Text;
 using System.Text.Json;
 using TeaShop.Presentation.Configuration;
@@ -8,6 +9,7 @@ namespace TeaShop.Presentation.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("[area]/[controller]/[action]/{id?}")]
+
     public class FaqController : Controller
     {
         private readonly HttpClient _client;
