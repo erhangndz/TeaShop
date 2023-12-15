@@ -26,9 +26,27 @@
             <td> @item.Email</td>
    
             <td>
-                <a asp-action="DeleteSubscribe" asp-route-id="@item.SubscribeId" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Sil</a>
+                <button onclick="deleteSubscribe(@item.SubscribeId)" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Sil</button>
                
             </td>
         </tr>
     }
 </table>
+
+<script>
+    function deleteSubscribe(id) {
+        Swal.fire({
+
+            title: 'Silmek istediğinize emin misiniz?',
+            text: 'Bu öğeyi silerseniz geri alamazsınız!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sil',
+            cancelButtonText: 'İptal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/Admin/Subscribe/DeleteSubscribe?id=" + id; // Yönlendirilecek URL'yi buraya yazın
+            }
+        });
+    }
+</script>

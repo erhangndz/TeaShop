@@ -26,7 +26,7 @@
             <td><img src="@item.ImageUrl" style="height:75px;width:75px;border-radius:50%" />  @item.Name</td>
             <td>@item.Comment</td>
             <td>
-                <a asp-action="DeleteTestimonial" asp-route-id="@item.TestimonialId" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Sil</a>
+                <button onclick="deleteTestimonial(@item.TestimonialId)" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Sil</button>
                 <a asp-action="UpdateTestimonial" asp-route-id="@item.TestimonialId" class="btn btn-outline-info"><i class="fas fa-pen"></i>Düzenle</a>
             </td>
         </tr>
@@ -34,3 +34,21 @@
 </table>
 <br />
 <a asp-action="CreateTestimonial" class="btn btn-dark"> <i class="fas fa-plus-circle"></i>  Yeni Referans Oluştur</a>
+
+<script>
+    function deleteTestimonial(id) {
+        Swal.fire({
+
+            title: 'Silmek istediğinize emin misiniz?',
+            text: 'Bu öğeyi silerseniz geri alamazsınız!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sil',
+            cancelButtonText: 'İptal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/Admin/Testimonial/DeleteTestimonial?id=" + id; // Yönlendirilecek URL'yi buraya yazın
+            }
+        });
+    }
+</script>

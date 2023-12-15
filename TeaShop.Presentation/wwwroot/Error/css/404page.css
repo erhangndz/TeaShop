@@ -1,0 +1,134 @@
+/*--
+	Author: W3Layouts
+	Author URL: http://w3layouts.com
+	License: Creative Commons Attribution 3.0 Unported
+	License URL: http://creativecommons.org/licenses/by/3.0/
+--*/
+html {
+	scroll-behavior: smooth;
+}
+body,
+html {
+	margin: 0;
+	padding: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+* {
+	box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	margin: 0;
+	padding: 0
+}
+a {
+	text-decoration: none;
+}
+.wrapper {
+	margin: 0 auto;
+	width: 75%;
+}
+.img-responsive {
+	max-width: 100%;
+}
+.d-grid {
+	display: grid;
+}
+.page-head {
+    font-size: 35px;
+    line-height: 40px;
+    text-align: center;
+    color: #232323;
+    margin:20px 0px;
+}
+.copyright {
+	padding:40px 0px;
+	text-align: center;
+	color: #797979;
+}
+.forms-25-info h3 {
+	color: #fea44b;
+	line-height: 145px;
+	font-size: 140px;
+}
+.form-inner-cont p {
+	color: #797979;
+	margin-bottom: 10px;
+	font-size: 20px;
+	line-height: 25px;
+}
+.actionbg {
+	color: #fff;
+	border: none;
+	background: #232323;
+	font-size: 16px;
+	line-height: 25px;
+	padding: 10px 25px;
+	margin-top: 20px;
+	display: inline-block;
+}
+.actionbg:hover {
+	background: #fea44b;
+}
+.company {
+	color: #fea44b;
+}
+.column {
+	align-self: center;
+}
+.forms-25-info {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 30px;
+}
+.form-inner-cont {
+	text-align: center;
+}
+/*-- /responsive-start --*/
+
+@media all and (max-width: 1440px) {}@media all and (max-width: 1366px) {}@media all and (max-width: 1280px) {}@media all and (max-width: 1080px) {}@media all and (max-width: 992px) {}@media all and (max-width: 900px) {}@media all and (max-width: 800px) {
+	.forms-25-info {
+		grid-template-columns:1fr;
+		grid-gap:0px;
+	}
+	.form-bottom-img {
+		height:500px;
+		overflow:hidden;
+	}
+}
+@media all and (max-width: 769px) {}@media all and (max-width: 737px) {}@media all and (max-width: 690px) {}@media all and (max-width: 667px) {
+	.form-bottom-img {
+		height:400px;
+		overflow:hidden;
+	}
+}
+@media all and (max-width: 641px) {
+	.wrapper {
+		width:90%;
+	}
+}
+@media all and (max-width: 600px) {}@media all and (max-width: 568px) {
+	.form-bottom-img {
+		height:340px;
+		overflow:hidden;
+	}
+}
+@media all and (max-width: 484px) {
+	.form-bottom-img {
+		height:300px;
+		overflow:hidden;
+	}
+}
+@media all and (max-width: 441px) {
+	.wrapper,
+	.wrapper-full {
+		width:100%;
+		padding:0 16px;
+	}
+}
+/*-- //responsive-end --*/

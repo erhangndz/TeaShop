@@ -27,7 +27,7 @@ namespace TeaShop.Presentation.Controllers
             createMessageDto.SendDate = DateTime.Now;
           await _client.PostAsJsonAsync("https://localhost:7248/api/Message/", createMessageDto);
 
-            return RedirectToAction("Index", "Default");
+            return NoContent();
         }
 
         [HttpPost]
@@ -35,7 +35,7 @@ namespace TeaShop.Presentation.Controllers
         {
             await _client.PostAsJsonAsync("https://localhost:7248/api/Subscribe/",createSubscribeDto);
 
-            return RedirectToAction("Index", "Default");
+            return NoContent();
         }
 
 

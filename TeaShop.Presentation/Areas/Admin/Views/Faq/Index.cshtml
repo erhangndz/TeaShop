@@ -36,7 +36,7 @@
                 }
             </td>
             <td>
-                <a asp-action="DeleteFaq" asp-route-id="@item.FaqId" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Sil</a>
+                <button onclick="deleteFaq(@item.FaqId)" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Sil</button>
                 <a asp-action="UpdateFaq" asp-route-id="@item.FaqId" class="btn btn-outline-info"><i class="fas fa-pen"></i>Düzenle</a>
             </td>
         </tr>
@@ -44,3 +44,21 @@
 </table>
 <br />
 <a asp-action="CreateFaq" class="btn btn-dark"> <i class="fas fa-plus-circle"></i>  Yeni Soru Ekle</a>
+
+<script>
+    function deleteFaq(id) {
+        Swal.fire({
+
+            title: 'Silmek istediğinize emin misiniz?',
+            text: 'Bu öğeyi silerseniz geri alamazsınız!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sil',
+            cancelButtonText: 'İptal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/Admin/Faq/DeleteFaq?id=" + id; // Yönlendirilecek URL'yi buraya yazın
+            }
+        });
+    }
+</script>

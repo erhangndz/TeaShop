@@ -21,8 +21,14 @@ namespace TeaShop.Presentation.Areas.Admin.Controllers
         string baseUri = "https://localhost:7248/api/Faq/";
         public async Task<IActionResult> Index()
         {
-            var faqs = await _client.GetFromJsonAsync<List<ResultFaqDto>>(baseUri);
-            return View(faqs);
+
+			
+				var faqs = await _client.GetFromJsonAsync<List<ResultFaqDto>>(baseUri);
+				return View(faqs);
+
+
+			
+			
         }
        
         public IActionResult CreateFaq()

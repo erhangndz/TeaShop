@@ -26,11 +26,14 @@ namespace TeaShop.Presentation.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-          
-            var drinks = await _client.GetFromJsonAsync<List<ResultDrinkDto>>(baseUri);
-            return View(drinks);
 
-        }
+            
+
+
+                var drinks = await _client.GetFromJsonAsync<List<ResultDrinkDto>>(baseUri);
+                return View(drinks);
+          
+		}
 
         public IActionResult CreateDrink()
         {
@@ -66,3 +69,6 @@ namespace TeaShop.Presentation.Areas.Admin.Controllers
 
     }
 }
+
+
+

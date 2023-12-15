@@ -30,10 +30,27 @@
             <td>@item.Subject</td>
             <td>@item.SendDate.ToString("g")</td>
             <td>
-                <a asp-action="DeleteAbout" asp-route-id="@item.MessageId" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Sil</a>
+                <button onclick="deleteMessage(@item.MessageId)" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Sil</button>
                 <a asp-action="MessageDetail" asp-route-id="@item.MessageId" class="btn btn-outline-info"><i class="fas fa-comment"></i>Mesajı Aç</a>
             </td>
         </tr>
     }
 </table>
 
+<script>
+    function deleteMessage(id) {
+        Swal.fire({
+
+            title: 'Silmek istediğinize emin misiniz?',
+            text: 'Bu öğeyi silerseniz geri alamazsınız!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sil',
+            cancelButtonText: 'İptal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/Admin/Message/DeleteMessage?id=" + id; // Yönlendirilecek URL'yi buraya yazın
+            }
+        });
+    }
+</script>

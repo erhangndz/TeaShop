@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace TeaShop.API.Validations
+namespace TeaShop.Presentation.Validations
 {
     public class CustomIdentityValidator: IdentityErrorDescriber
     {

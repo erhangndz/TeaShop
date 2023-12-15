@@ -18,6 +18,7 @@ namespace TeaShop.Presentation.Areas.Admin.Controllers
         string baseUri = "https://localhost:7248/api/About/";
         public async Task<IActionResult> Index()
         {
+
             var abouts = await _client.GetFromJsonAsync<List<ResultAboutDto>>(baseUri);
             return View(abouts);
         }

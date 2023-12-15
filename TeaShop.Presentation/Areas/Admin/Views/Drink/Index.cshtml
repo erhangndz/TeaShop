@@ -26,7 +26,7 @@
             <td>@item.DrinkName</td>
             <td>@item.Price</td>
             <td>
-                <a asp-action="DeleteDrink"  asp-route-id="@item.DrinkId" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Sil</a>
+                <button onclick="deletedrink(@item.DrinkId)" class="btn btn-outline-danger"><i class="fas fa-trash"></i> Sil</button>
                 <a asp-action="UpdateDrink" asp-route-id="@item.DrinkId" class="btn btn-outline-info"><i class="fas fa-pen"></i>Düzenle</a>
             </td>
         </tr>
@@ -34,3 +34,22 @@
 </table>
 <br />
 <a asp-action="CreateDrink" class="btn btn-dark"> <i class="fas fa-plus-circle"></i>  Yeni İçecek Ekle</a>
+
+
+<script>
+    function deletedrink(id) {
+        Swal.fire({
+
+            title: 'Silmek istediğinize emin misiniz?',
+            text: 'Bu öğeyi silerseniz geri alamazsınız!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sil',
+            cancelButtonText: 'İptal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/Admin/Drink/DeleteDrink?id=" + id; // Yönlendirilecek URL'yi buraya yazın
+            }
+        });
+    }
+</script>

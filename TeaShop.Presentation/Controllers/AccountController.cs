@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -7,6 +8,7 @@ using Newtonsoft.Json.Serialization;
 using NuGet.DependencyResolver;
 using System.Reflection.Metadata;
 using System.Text;
+using TeaShop.Entity.Models;
 using TeaShop.Presentation.Models;
 
 namespace TeaShop.Presentation.Controllers
@@ -14,11 +16,15 @@ namespace TeaShop.Presentation.Controllers
     [AllowAnonymous]
     public class AccountController : Controller
     {
-        private readonly HttpClient _client;
+        private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
+        private readonly IMapper _mapper;
 
-        public AccountController(HttpClient client)
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IMapper mapper)
         {
-            _client = client;
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _mapper = mapper;
         }
 
         public IActionResult Signup()
@@ -30,38 +36,25 @@ namespace TeaShop.Presentation.Controllers
         public async Task<IActionResult> SignUp(RegisterViewModel registerViewModel)
         {
 
-            TempData["registerPassword"]= registerViewModel.Password;
-            var result = await _client.PostAsJsonAsync("https://localhost:7248/api/Account/Register", registerViewModel);
-
-            if (result.IsSuccessStatusCode)
+            var newUser = _mapper.Map<AppUser>(registerViewModel);
+            var result = await _userManager.CreateAsync(newUser, registerViewModel.Password);
+            if (result.Succeeded)
             {
-                return RedirectToAction("Login");
+                return RedirectToAction("Login", "Account");
             }
 
-
-
-            else
+            var values = result.Errors.ToList();
+            values.ForEach(x =>
             {
-                var registerJson= JsonConvert.SerializeObject(registerViewModel);
-                var content = new StringContent(registerJson, Encoding.UTF8, "application/json");
-                var response = await _client.PostAsync("https://localhost:7248/api/Account/Register", content);
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<IdentityError>>(jsonData);
-              
-                
-                values.ForEach(x =>
-                {
-                    ModelState.AddModelError("", x.Description);
-                   
-                });
-              
-                return View();
-              
-            }
-            
+                ModelState.AddModelError("", x.Description);
 
+            });
+
+            return View();
 
         }
+
+
 
         public IActionResult Login()
         {
@@ -71,15 +64,27 @@ namespace TeaShop.Presentation.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            
-            var result = await _client.PostAsJsonAsync("https://localhost:7248/api/Account/Login", model);
-            if (result.IsSuccessStatusCode)
+
+            var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
+            if (result.Succeeded)
             {
-               
-                return RedirectToAction("Index", "Dashboard", new { area="Admin" });
+
+                var user = await _userManager.FindByNameAsync(model.UserName);
+                TempData["user"] = user.NameSurname;
+                return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
             }
-            ModelState.AddModelError("", "Kullanıcı Adı veya Şifre Yanlış");
-            return View();
+            else
+            {
+                ModelState.AddModelError("", "Kullanıcı adı veya şifre hatalı");
+                return View();
+            }
+        }
+
+
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Login");
         }
     }
 }

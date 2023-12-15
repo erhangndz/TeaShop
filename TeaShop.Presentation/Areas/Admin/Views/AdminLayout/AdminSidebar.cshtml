@@ -6,7 +6,7 @@
 				<div class="main-menu-header">
 					<img class="img-radius" src="https://i.hizliresim.com/k5r40gw.jfif" alt="User-Profile-Image">
 					<div class="user-details">
-						<span> @User.Identity.Name</span>
+						<span> @TempData["user"]</span>
 						<div id="more-details">Admin<i class="fa fa-chevron-down m-l-5"></i></div>
 					</div>
 				</div>
@@ -14,7 +14,7 @@
 					<ul class="list-unstyled">
 						<li class="list-group-item"><a href="user-profile.html"><i class="feather icon-user m-r-5"></i>Profil</a></li>
 						<li class="list-group-item"><a href="#!"><i class="feather icon-settings m-r-5"></i>Ayarlar</a></li>
-						<li class="list-group-item"><a href="auth-normal-sign-in.html"><i class="feather icon-log-out m-r-5"></i>Çıkış Yap</a></li>
+						<li class="list-group-item"><a href="/Account/Logout"><i class="feather icon-log-out m-r-5"></i>Çıkış Yap</a></li>
 					</ul>
 				</div>
 			</div>
@@ -43,7 +43,7 @@
 					<a asp-controller="Subscribe" asp-action="Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-mail"></i></span><span class="pcoded-mtext">Aboneler</span></a>
 				</li>
 				<li class="nav-item">
-					<a asp-controller="Subscribe" asp-action="Index" class="nav-link "><span class="pcoded-micon"><i class="fas fa-laptop"></i></span><span class="pcoded-mtext">Siteye Git</span></a>
+					<a asp-controller="Default" asp-action="Index" class="nav-link "><span class="pcoded-micon"><i class="fas fa-laptop"></i></span><span class="pcoded-mtext">Siteye Git</span></a>
 				</li>
 
 			</ul>

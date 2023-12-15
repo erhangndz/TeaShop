@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using TeaShop.Presentation.Dtos.FaqDtos;
 using TeaShop.Presentation.Dtos.MessageDtos;
 
 namespace TeaShop.Presentation.Areas.Admin.Controllers
@@ -19,8 +20,16 @@ namespace TeaShop.Presentation.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var messages = await _client.GetFromJsonAsync<List<ResultMessageDto>>(baseUri);
-            return View(messages);
+
+		
+
+				var messages = await _client.GetFromJsonAsync<List<ResultMessageDto>>(baseUri);
+				return View(messages);
+
+
+		
+
+			
         }
 
        public async Task<IActionResult> DeleteMessage(int id)

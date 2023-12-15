@@ -19,28 +19,32 @@ namespace TeaShop.Presentation.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            string baseUri = "https://localhost:7248/api/Statistics/";
 
-            ViewBag.drinkCount = await _client.GetStringAsync( baseUri +"GetDrinkCount");
-            
-            ViewBag.lastDrinkName = await _client.GetStringAsync(baseUri+ "GetLastDrinkName");
-           
-            var price  = await _client.GetStringAsync(baseUri + "GetAvgDrinkPrice");
-            ViewBag.avgDrinkPrice = price.ToString().Substring(0,5);
+			
+				string baseUri = "https://localhost:7248/api/Statistics/";
 
+				ViewBag.drinkCount = await _client.GetStringAsync(baseUri + "GetDrinkCount");
 
-            ViewBag.maxPriceDrink = await _client.GetStringAsync(baseUri + "GetMaxPriceDrink");
-          
-            ViewBag.testimonialCount = await _client.GetStringAsync(baseUri + "GetTestimonialCount");
-             
-            ViewBag.messageCount= await _client.GetStringAsync(baseUri + "GetMessageCount");
+				ViewBag.lastDrinkName = await _client.GetStringAsync(baseUri + "GetLastDrinkName");
+
+				var price = await _client.GetStringAsync(baseUri + "GetAvgDrinkPrice");
+				ViewBag.avgDrinkPrice = price.ToString().Substring(0, 5);
 
 
-            ViewBag.faqCount= await _client.GetStringAsync(baseUri + "GetFaqCount");
+				ViewBag.maxPriceDrink = await _client.GetStringAsync(baseUri + "GetMaxPriceDrink");
 
-            ViewBag.subscribeCount= await _client.GetStringAsync(baseUri + "GetSubscribeCount");
+				ViewBag.testimonialCount = await _client.GetStringAsync(baseUri + "GetTestimonialCount");
 
-            return View();
+				ViewBag.messageCount = await _client.GetStringAsync(baseUri + "GetMessageCount");
+
+
+				ViewBag.faqCount = await _client.GetStringAsync(baseUri + "GetFaqCount");
+
+				ViewBag.subscribeCount = await _client.GetStringAsync(baseUri + "GetSubscribeCount");
+
+				return View();
+			
+			
         }
     }
 }

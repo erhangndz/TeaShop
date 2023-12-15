@@ -18,7 +18,7 @@
                             <textarea class="massage-bt" placeholder="Mesajınızı buraya yazın" rows="5" id="comment" name="Content"></textarea>
                         </div>
                         <div class="send_btn">
-                            <button class="btn btn-outline-warning" type="submit">Gönder</button>
+                            <button class="btn btn-outline-warning" onclick="sendMessage()" type="submit">Gönder</button>
                         </div>
                     </form>
                     
@@ -34,3 +34,21 @@
         </div>
     </div>
 </div>
+
+<script>
+    function sendMessage() {
+        Swal.fire({
+
+            title: 'Tebrikler',
+            text: 'Mesajınız başarıyla gönderildi, size en kısa sürede cevap verilecektir.',
+            icon: 'success',
+            showCancelButton: true,
+            confirmButtonText: 'Tamam',
+            cancelButtonText: 'İptal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/Default/Index"; // Yönlendirilecek URL'yi buraya yazın
+            }
+        });
+    }
+</script>

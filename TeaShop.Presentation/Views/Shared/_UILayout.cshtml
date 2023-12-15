@@ -79,7 +79,7 @@
                         <h5 class="newsletter_taital">Bültenimize Abone Olun</h5>
                         <div class="subscribe_main">
                             <input type="text" class="mail_text" placeholder="Email Adresinizi Yazın" name="Email">
-                            <button class="btn btn-outline-warning">Abone Ol</button>
+                            <button class="btn btn-outline-warning" type="submit" onclick="subscribe()">Abone Ol</button>
                         </div>
                     </div>
                     </form>
@@ -203,6 +203,26 @@
                     $(this).prev(".card-header").find(".fa").removeClass("fa-minus").addClass("fa-plus");
                 });
             });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <script>
+            function subscribe() {
+                Swal.fire({
+
+                    title: 'Tebrikler',
+                    text: 'Email Adresiniz Abone Bültenimize kayıt edildi.',
+                    icon: 'success',
+                    showCancelButton: true,
+                    confirmButtonText: 'Tamam',
+                    cancelButtonText: 'İptal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "/Default/Index"; // Yönlendirilecek URL'yi buraya yazın
+                    }
+                });
+            }
         </script>
 </body>
 

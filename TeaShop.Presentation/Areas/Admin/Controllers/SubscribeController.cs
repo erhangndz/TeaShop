@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using TeaShop.Presentation.Dtos.MessageDtos;
 using TeaShop.Presentation.Dtos.SubscribeDtos;
 
 namespace TeaShop.Presentation.Areas.Admin.Controllers
@@ -20,8 +21,15 @@ namespace TeaShop.Presentation.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var subscribes = await _client.GetFromJsonAsync<List<ResultSubscribeDto>>(baseUri);
-            return View(subscribes);
+			
+				var subscribes = await _client.GetFromJsonAsync<List<ResultSubscribeDto>>(baseUri);
+				return View(subscribes);
+
+
+		
+
+
+			
         }
 
         public async Task<IActionResult> DeleteSubscribe(int id)
