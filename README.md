@@ -32,6 +32,7 @@ Projedeki katmanlar şunlar:
 - Asp.Net Core Web Api 7.0
 - Microsoft SQL Server
 - Entity Framework Code First
+- Repository Design Pattern
 - Area
 - Viewcomponents
 - Identity
